@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ee630a72-b439-4007-8c59-bd0a2961e9b8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="bsName" class="java.lang.String"/>
+	<parameter name="addres" class="java.lang.String"/>
+	<parameter name="town" class="java.lang.String"/>
+	<parameter name="email" class="java.lang.String"/>
+	<parameter name="slogan" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT `loan_applications`. `Loan_Acct_No`, `loan_applications`.`Client_Name`, `loan_applications`.`KYC_ID`,  `loan_applications`.`Total_Disbursed`, `loan_applications`. `Loan_Duration`, `loan_applications`. `Date_Disbursed`,`loan_instalment_paytrack`.`Track_No`,`loan_instalment_paytrack`.`Amount_Paid`,`loan_instalment_paytrack`.`Date_Paid` FROM `loan_applications`,`loan_instalment_paytrack` WHERE `loan_applications`.`Loan_Acct_No`='ELDY001969095096' AND `loan_applications`.`Loan_Acct_No`=`loan_instalment_paytrack`.`Loan_Acct_No`;]]>
+	</queryString>
+	<field name="Loan_Acct_No" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Client_Name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="KYC_ID" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Total_Disbursed" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Loan_Duration" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Date_Disbursed" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Track_No" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Amount_Paid" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Date_Paid" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="Amount_Paid_1" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{Amount_Paid}]]></variableExpression>
+	</variable>
+	<variable name="variable1" class="java.lang.Float">
+		<variableExpression><![CDATA[Float.valueOf($F{Total_Disbursed}.floatValue() - $V{Amount_Paid_1}.floatValue())]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="115" splitType="Stretch">
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="555" height="28" uuid="1263dfe1-8812-4af4-9948-37321a0ea8a1"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="14" isBold="true" isStrikeThrough="false"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{bsName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="28" width="555" height="27" uuid="e6b15fe6-080e-4210-9cfd-8216ce917779"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="14" isBold="true" isStrikeThrough="false"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{addres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="55" width="555" height="25" uuid="c601b75f-6c56-41f6-92b8-b3595581859d"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="14" isBold="true" isStrikeThrough="false"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{town}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="80" width="555" height="24" uuid="02e46291-e7e7-4b56-9ea6-4231bde5c240"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="14" isBold="true" isStrikeThrough="false"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{email}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="104" width="555" height="1" uuid="5cbec418-be4a-4475-8b72-ef5cada4793d"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="137" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="37" width="100" height="20" uuid="b3ff5eeb-f37d-4d0e-897c-cd955b30d960"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Client_Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="207" y="37" width="100" height="20" uuid="4213348e-d94c-4963-bc4c-67e9e11d7d59"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{KYC_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="429" y="37" width="100" height="20" uuid="7b9b33c6-2bf6-48da-a2b3-5c52d865d6b4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Loan_Acct_No}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="0" y="83" width="100" height="20" uuid="6f6d9876-12b9-4dbb-b801-70fd7920b208"/>
+				<textElement>
+					<font fontName="Times New Roman" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Total_Disbursed}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="207" y="83" width="100" height="20" uuid="ca24a517-4b8a-4df3-a877-624bd7c29bf8"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Date_Disbursed}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0">
+				<reportElement x="455" y="83" width="100" height="20" uuid="c217ec7d-a372-4fd4-bbf6-25d49c939114"/>
+				<textElement>
+					<font fontName="Times New Roman" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Loan_Duration}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="073ffac6-5077-41f3-bdd0-8e771cff54ef"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="10" isBold="true" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="207" y="0" width="100" height="20" uuid="1ad21a86-07e5-47a7-96e2-0f37b1bee169"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="10" isBold="true" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[ID Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="429" y="0" width="126" height="20" uuid="fc13382f-7d25-4eb3-beeb-df4e086147bc"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="10" isBold="true" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Loan Account Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="429" y="57" width="126" height="20" uuid="b2c8f92b-5ca2-4285-aceb-477e86b00b1a"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="10" isBold="true" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Loan Duration(months)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="57" width="100" height="20" uuid="5115697c-41a2-4279-b253-44832fea97e6"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="10" isBold="true" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Loan Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="207" y="57" width="100" height="20" uuid="b4c6381c-7a59-485d-bc99-37e7f9e4e35b"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="10" isBold="true" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Disbursed Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="103" width="555" height="20" uuid="1e8896ac-6d0d-4402-a09e-9f732b990de4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Payment Records]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="123" width="554" height="1" uuid="8ca40272-6375-428a-9830-937e0de41344"/>
+			</line>
+			<line>
+				<reportElement x="0" y="104" width="555" height="1" uuid="922b8f14-c40e-4408-9324-1ccfb0542c00"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="185" height="20" uuid="a0cdba76-67bf-4103-972a-1d14710f3b87"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Track_No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="185" y="0" width="185" height="20" uuid="7515aa8a-f1f1-46f1-8266-88cc8d2e7c73"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Amount_Paid]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="0" width="185" height="20" uuid="ab674a41-9dc3-47d3-b771-76e238c90a1f"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Date_Paid]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="185" height="20" uuid="c747cb8c-c364-4aad-9bbb-1cc7903cd246"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Track_No}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="185" y="0" width="185" height="20" uuid="830dc85d-f8b1-4c73-bb0e-c61057ab14aa"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Amount_Paid}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="370" y="0" width="185" height="20" uuid="054c4e47-bdbc-4c40-a75a-57015f966036"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Date_Paid}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement x="3" y="0" width="100" height="1" uuid="42c02fe4-86d9-40a8-a632-6f2341202508"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="43" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="60" splitType="Stretch">
+			<textField pattern="#,##0.00">
+				<reportElement x="185" y="0" width="148" height="31" uuid="0d086e8b-cef3-42c0-91d3-250b4afaf843"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Amount_Paid_1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="185" y="31" width="148" height="27" uuid="1cb37dbe-7a53-49fc-acf3-7d16fb0202f8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{variable1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="85" y="0" width="100" height="31" uuid="113fa000-b73c-42ef-9c0c-4e5940946185"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Paid:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="85" y="31" width="100" height="27" uuid="410ae3cd-4c95-40bc-a780-3c0cb7158ffb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Loan Balance:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="2" width="555" height="1" uuid="74649d71-3d69-4ed8-a814-11a62e262dd0"/>
+			</line>
+			<line>
+				<reportElement x="0" y="58" width="555" height="1" uuid="cf8ce6c8-94f7-4dfa-94a4-c1e35057fc26"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>
