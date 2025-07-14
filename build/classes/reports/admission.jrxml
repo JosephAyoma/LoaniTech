@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="795" pageHeight="842" columnWidth="755" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="76159e69-fb1d-4eb0-ab97-c5d9136dc8f7">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="bsName" class="java.lang.String"/>
+	<parameter name="addres" class="java.lang.String"/>
+	<parameter name="town" class="java.lang.String"/>
+	<parameter name="email" class="java.lang.String"/>
+	<parameter name="slogan" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     members_info.`Member_Name`,
+     member_admission.`Member_Admin_No`,
+     member_admission.`Member_ID_No`,
+     member_admission.`Group_Name`,
+     member_admission.`Admin_Fee`,
+     member_admission.`Admin_Date`,
+     member_admission.`Is_Active`
+FROM
+     `members_info` members_info INNER JOIN `member_admission` member_admission ON members_info.`Member_ID_No` = member_admission.`Member_ID_No`]]>
+	</queryString>
+	<field name="Member_Name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Member_Admin_No" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Member_ID_No" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Group_Name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Admin_Fee" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Admin_Date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Is_Active" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="Admin_Fee_1" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{Admin_Fee}]]></variableExpression>
+	</variable>
+	<variable name="Member_Admin_No_1" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{Member_Admin_No}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="124" splitType="Stretch">
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="65" width="755" height="25" uuid="4d769448-76a7-4530-a367-c428f5cae2b9"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{town}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="90" width="755" height="24" uuid="9b3457fb-b4d3-494d-acae-a2a4eb888fac"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="10" width="755" height="28" uuid="51263828-4a48-4fd3-aa9c-065560e95c2c"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{bsName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="38" width="755" height="27" uuid="ea0f3744-c422-4aa3-97da-4d43f9a07ca4"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{addres}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="15" width="755" height="20" forecolor="#33CCFF" uuid="38e7009d-6e94-4e8b-8679-a9b2726e97be"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[MEMBER ADMISSION REPORT]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="107" height="20" uuid="9e6aabdd-3ea5-4842-af47-d5358451fa92"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Member_Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="107" y="0" width="107" height="20" uuid="0f990292-6094-4822-ae12-39bb7451f3db"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Member_Admin_No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="214" y="0" width="107" height="20" uuid="02272fe4-d342-482f-862b-2a8fe8139ec8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Member_ID_No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="321" y="0" width="107" height="20" uuid="e6428d1c-24c9-4196-a814-f6fba983179b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Group_Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="428" y="0" width="107" height="20" uuid="c85c7f61-d777-4c70-878d-ab2d779721f8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Admin_Fee]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="535" y="0" width="107" height="20" uuid="78ebfa46-1fad-4bd1-9133-53c11a1053fb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Admin_Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="642" y="0" width="107" height="20" uuid="4812c2cf-2d05-44eb-8572-8fa9132ec529"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Is_Active]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement positionType="Float" x="0" y="0" width="107" height="20" isPrintWhenDetailOverflows="true" uuid="eb50f2fc-c75c-4d71-a216-fb6e36a6ac9d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Member_Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="107" y="0" width="107" height="20" isPrintWhenDetailOverflows="true" uuid="d9022266-efce-4f30-b2b4-912536f1b3b2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Member_Admin_No}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="214" y="0" width="107" height="20" isPrintWhenDetailOverflows="true" uuid="94eb86b8-a4fa-46cb-b566-89f027286374"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Member_ID_No}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="321" y="0" width="107" height="20" isPrintWhenDetailOverflows="true" uuid="999890c1-6379-40e9-91c6-e7924c2201fe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Group_Name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="428" y="0" width="107" height="20" uuid="b43ead39-1d1d-4329-86ba-50b120061126"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Admin_Fee}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="535" y="0" width="107" height="20" uuid="f22a7737-49df-4a8b-a018-02bbb5b8e35e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Admin_Date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="642" y="0" width="107" height="20" uuid="b36f48bd-cf8c-4dd6-b6d6-cdd57e7034cb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Is_Active}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField pattern="#,##0.00">
+				<reportElement x="435" y="22" width="120" height="20" uuid="e95f3307-69e1-4b73-96cd-658eadfe7e3b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Admin_Fee_1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="107" y="22" width="100" height="20" uuid="1bcaebce-dbc8-45d9-b355-8d8002191545"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Member_Admin_No_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="22" width="100" height="20" uuid="cdb3144b-2d3b-486e-a2e2-26facb0c3d63"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<line>
+				<reportElement x="-30" y="-1" width="800" height="1" uuid="307806b2-a163-4b15-b676-af56e5aa1488"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>
