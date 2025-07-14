@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="895" pageHeight="842" columnWidth="855" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0ed1fe97-4c96-476f-983d-6e4d5b7738bb">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="bsName" class="java.lang.String"/>
+	<parameter name="addres" class="java.lang.String"/>
+	<parameter name="town" class="java.lang.String"/>
+	<parameter name="email" class="java.lang.String"/>
+	<parameter name="slogan" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[Select `loan_payment_track`.`Loan_Account_No`
+,`loan_applications`.`Client_Name`,
+`loan_applications`.`KYC_ID`,
+`loan_applications`.`Credit_Officer`,
+`loan_applications`.`Group_Name`,
+`loan_applications`.`Program`,
+`loan_applications`.`Total_Disbursed`,  
+(SELECT Sum( `Instalment`) FROM `loan_payment_track` WHERE  `Pay_Date`<=CURDATE() AND `Pay_Status`='Not Paid')
+ AS 'Overdue'
+ FROM `loan_payment_track`,`loan_applications`,`loan_instalment_paytrack`
+ WHERE
+ `loan_payment_track`.`ID_Number`=`loan_applications`.`KYC_ID` AND loan_payment_track.Loan_Account_No=loan_instalment_paytrack.Loan_Acct_No AND loan_instalment_paytrack.Loan_Acct_No=loan_applications.Loan_Acct_No  
+  GROUP By `loan_instalment_paytrack`.`Loan_Acct_No`;]]>
+	</queryString>
+	<field name="Loan_Account_No" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Client_Name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="KYC_ID" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Credit_Officer" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Group_Name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Program" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Total_Disbursed" class="java.lang.Float">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Overdue" class="java.lang.Double"/>
+	<variable name="KYC_ID_1" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{KYC_ID}]]></variableExpression>
+	</variable>
+	<variable name="Total_Disbursed_1" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{Total_Disbursed}]]></variableExpression>
+	</variable>
+	<variable name="Overdue_1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{Overdue}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="119" splitType="Stretch">
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="55" width="855" height="25" uuid="bcab36ee-9db3-4ddc-b13b-b5ffe0710b92"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{town}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="80" width="855" height="24" uuid="eef57022-c287-499c-848a-848f4535df1e"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="855" height="28" uuid="f29dac63-37da-4841-a4db-df3c397aa231"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{bsName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="28" width="855" height="27" uuid="a7307538-60b2-4fbf-b86e-04af18aeeb18"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{addres}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="15" width="855" height="20" forecolor="#33CCFF" uuid="eeb15064-6643-435c-b2d9-221b44ef8224"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[LOAN OVERDUE REPRORT]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="106" height="20" uuid="f2260cf6-5c9d-4af7-9725-eabaf4cc01ae"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Loan_Account_No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="106" y="0" width="106" height="20" uuid="1a797706-dfbc-43a5-98a0-4f195033b197"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Client_Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="0" width="106" height="20" uuid="991c6922-7d8f-4e9f-94bb-09ab49356fa5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[KYC_ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="318" y="0" width="106" height="20" uuid="4e89641e-9e38-4486-b299-025968b0b3cc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Credit_Officer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="424" y="0" width="106" height="20" uuid="10439e83-8696-4523-9306-8a9c881adade"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Group_Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="530" y="0" width="106" height="20" uuid="03f1e8a1-eaf6-4a09-b2db-aeb39a42a1bc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Program]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="636" y="0" width="106" height="20" uuid="017fda5a-197d-453a-97c2-279167d3363d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Total_Disbursed]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="742" y="0" width="106" height="20" uuid="5f86e5f0-78a4-4e96-9faa-122f752ee143"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Overdue]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="106" height="20" uuid="93b212aa-bdf8-4de3-8efe-f8fe77d77343"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Loan_Account_No}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="106" y="0" width="106" height="20" isPrintWhenDetailOverflows="true" uuid="c58b2edb-86f6-42da-bedc-9a016f251b7b"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Client_Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="212" y="0" width="106" height="20" uuid="fd77948e-c6cf-4db5-b728-e6c5a649a99f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{KYC_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="318" y="0" width="106" height="20" uuid="84ac9833-092c-40db-bb24-e1a46fd01b13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Credit_Officer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="424" y="0" width="106" height="20" uuid="4362c69a-db3d-4a6b-b6da-ab798c8ec926"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Group_Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="530" y="0" width="106" height="20" uuid="32ce2bbf-bebc-46e2-9e8e-0ff75afa835a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Program}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="636" y="0" width="106" height="20" uuid="3fe446bc-00e0-48fc-bc97-f52639dea2c6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Total_Disbursed}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="742" y="0" width="106" height="20" uuid="fb495c0e-07ee-4c99-bb2a-fafa849339a2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Overdue}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="78eaf13f-37ad-48a8-af54-ec4e71c2d821"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<textField pattern="#,##0.00">
+				<reportElement x="106" y="0" width="100" height="20" uuid="bed897d1-6af5-40e8-b8e7-0a014ee5fbc7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{KYC_ID_1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="636" y="0" width="100" height="20" uuid="931f1c9f-efbe-4a61-8982-21befca199bf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Total_Disbursed_1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00" isBlankWhenNull="true">
+				<reportElement x="742" y="0" width="100" height="20" uuid="bd0ba879-3513-4fef-99d1-4b66abd3e19b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Overdue_1}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-24" y="-1" width="898" height="1" uuid="a51d7a78-c2cc-4a96-a398-e2192e2da56f"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>
