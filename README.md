@@ -1,5 +1,5 @@
 **LoaniTech SaaS: Empowering Microfinance & Chama Group Management**
-<img width="1920" height="880" alt="Screenshot 2025-07-24 161430" src="https://github.com/user-attachments/assets/4d419c2a-d760-41fb-9f15-42e7b2b6af67" />
+<img width="920" height="680" alt="Screenshot 2025-07-24 161430" src="https://github.com/user-attachments/assets/4d419c2a-d760-41fb-9f15-42e7b2b6af67" />
 
 **1. About LoaniTech SaaS**
 
@@ -53,32 +53,39 @@ o	Manage business information, branches, loan programs, loan rates, fee types, a
 
 **DASHBOARD**
 
-<img width="1920" height="1080" alt="Screenshot 2025-07-24 160223" src="https://github.com/user-attachments/assets/0b536037-a988-4c82-b993-6cec84e9177d" />
+<img width="920" height="680" alt="Screenshot 2025-07-24 160223" src="https://github.com/user-attachments/assets/0b536037-a988-4c82-b993-6cec84e9177d" />
 
 **ADMIN CONFIGURATION MODULE**
 
 **Business Information**
 
-   <img width="1920" height="1080" alt="Screenshot 2025-07-24 162618" src="https://github.com/user-attachments/assets/f4816d71-0d41-4b41-b5f7-b5419ce98ede" />
+   <img width="920" height="680" alt="Screenshot 2025-07-24 162618" src="https://github.com/user-attachments/assets/f4816d71-0d41-4b41-b5f7-b5419ce98ede" />
 
 **Branch**
 
-   <img width="1920" height="1080" alt="Screenshot 2025-07-24 162752" src="https://github.com/user-attachments/assets/77f3fa69-7f30-4395-90bb-dc03041247ec" />
+   <img width="920" height="680" alt="Screenshot 2025-07-24 162752" src="https://github.com/user-attachments/assets/77f3fa69-7f30-4395-90bb-dc03041247ec" />
 
 **Loan Program**
 
- <img width="1920" height="1080" alt="Screenshot 2025-07-24 162839" src="https://github.com/user-attachments/assets/53e0c856-7bed-432d-ab91-9a8a790a0087" />
+ <img width="920" height="680" alt="Screenshot 2025-07-24 162839" src="https://github.com/user-attachments/assets/53e0c856-7bed-432d-ab91-9a8a790a0087" />
 
 **Calendar**
 
-   <img width="1920" height="1080" alt="Screenshot 2025-07-24 163118" src="https://github.com/user-attachments/assets/b9c8f6f2-cc6b-42e1-a7dc-05bbac27c880" />
+   <img width="920" height="680" alt="Screenshot 2025-07-24 163118" src="https://github.com/user-attachments/assets/b9c8f6f2-cc6b-42e1-a7dc-05bbac27c880" />
 
-8.	Nostro Accounts Process (transaction process)-fields include account name, description, code/number
-9.	Fee types-fields include, fee name, description
-10.	Loan Fees-fields include, Loan program, is Fixed Amount, is Percentage, Amount Value
-11.	Client Accounts Type-fields include, Account Name, description, Type (fixed, deposit etc.)
-12.	Security module-has two section, roles and rights management, fields include, role Name, permissions, user management section, fields
-includes, username, full name, email address, role, temporary password. All fields should have a unique identifier
+**Nostro Accounts Process (transaction process)**
+<img width="920" height="680" alt="Screenshot 2025-07-24 163118" src="https://github.com/user-attachments/assets/1fe48d3c-7ac5-42e5-916c-d8e86dfdb6a5" />
+
+**Fee types**
+<img width="920" height="680" alt="Screenshot 2025-07-24 170016" src="https://github.com/user-attachments/assets/2c22ab15-0589-478f-83a4-5c46c1bb7dc6" />
+
+**Loan Fees**
+<img width="1920" height="1080" alt="Screenshot 2025-07-24 170114" src="https://github.com/user-attachments/assets/e261a7b4-2483-4a01-a98c-5c53120f867e" />
+
+**Client Accounts Type**
+<img width="1920" height="1080" alt="Screenshot 2025-07-24 170204" src="https://github.com/user-attachments/assets/6c629d65-88a6-431e-a1e3-082d92cda0e1" />
+
+ 
 
 OPERATION MODULE
 Group Management- fields include, Assigned User, Group Name, Loan Program, Meeting day(drop down list), Contact Person, Contact Phone Number, Email Address, Formation Date
